@@ -35,11 +35,9 @@ main_monthly_interest = ''
 main_monthly_payment = ''
 loan_amount = ''
 continue_answer = ''
-monthly_rate = ''
-payment = ''
 
 # modules
-def messages(message, lang='en')
+def messages(message, lang = 'en')
   MESSAGES[lang][message]
 end
 
@@ -64,9 +62,9 @@ def which_language(answer)
   elsif answer == '1'
     return 'en'
   else
-      prompt(messages('warning_language'))
-      answer = Kernel.gets().chomp()
-      which_language(answer)
+    prompt(messages('warning_language'))
+    answer = Kernel.gets().chomp()
+    which_language(answer)
   end
 end
 
@@ -99,17 +97,16 @@ loop do # main loop
   loop do
     prompt(messages('loan_amount_message', language))
     loan_amount = Kernel.gets().chomp()
-    #loan_amount_number = loan_amount.to_f()
 
     if loan_amount.empty?()
       prompt(messages('empty_message', language))
-    elsif numeric?(loan_amount) # not working as the .empty? is for string and .nan? for floats and integers
+    elsif numeric?(loan_amount)
       prompt(messages('Invalid_entry', language))
     else
       break
     end
   end
-  #binding.pry
+
   # ask for APR
   loop do
     prompt(messages('interest_message', language))
