@@ -1,0 +1,42 @@
+# mortgage_calculator_messages
+en:
+  language_preference: |
+    Choose your language? Just type the number.
+    Escoja su idioma. Solo entre el numero.
+    1) English
+    2) Español
+  welcome: "Hello and welcome to the Mortgage Calculator. What is your name:"
+  Invalid_name: "You did not enter your name."
+  Invalid_entry: "Your entry is invalid. Please try again."
+  greeting: "Hi "
+  warning_language: |
+    You entered an invalid entry. Please select 1 for English or 2 for Spanish.
+    Ese numero es invalido por favor use el numero 1 para Ingles o 2 para Español.
+  loan_amount_message: "What is the amount of your loan?"
+  interest_message: "What is the APR? (Ex: 5.6)"
+  loan_term_message: "For how many months is the loan?"
+  goodbye: "Thank you for using the Mortgage Calculator. Goodbye!"
+  result: "Your monthly payment will be: "
+  continue: "Would you like to make another calculation? (enter Y for yes)"
+  empty_message: "Your entry was empty. Please retype."
+
+es:
+  language_preference: |
+    Choose your language? Just type the number.
+    Escoja su idioma. Solo entre el numero.
+    1) English
+    2) Español
+  welcome: "Hola y bienvenido a la Calculadora de Hipotecas. Cual es su nombre:"
+  Invalid_name: "Usted entro un nombre invalido."
+  Invalid_entry: "Usted entro un numero invalido."
+  greeting: "Hola "
+  warning_language: |
+    You entered an invalid entry. Please select 1 for English or 2 for Spanish.
+    Ese numero es invalido por favor use el numero 1 para Ingles o 2 para Español.
+  loan_amount_message: "Cuanto dinero pide para su Hipoteca?"
+  interest_message: "Cual es el porciento de su APR? (Ej: 5.6)"
+  loan_term_message: "Cual es el termino de su Hipoteca en meses."
+  goodbye: "Gracias por usar la Calculadora de Hipotecas. Adios."
+  result: "Su pago mensual es: "
+  continue: "Quiere calcular otra Hipoteca? (Presione S para continuar)"
+  empty_message: "Su entrada esta vacia, por favor escriba de nuevo."

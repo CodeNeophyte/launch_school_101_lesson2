@@ -10,7 +10,7 @@ require 'yaml'
 require 'pry'
 MESSAGES = YAML.load_file('calculator_messages.yml')
 
-LANGUAGE = 'es'
+LANGUAGE = 'en'
 
 def messages(message, lang='en')
   MESSAGES[lang][message]
@@ -31,8 +31,6 @@ end
 def number?(input)
   integer?(input) || float?(input)
 end
-
-
 
 def operation_to_message(op)
 word =       case op
