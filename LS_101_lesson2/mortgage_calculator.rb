@@ -68,8 +68,10 @@ def which_language(answer)
   end
 end
 
-def numeric?(num)
-  false if Float(num) rescue true
+def not_numeric?(num)
+    false if Float(num)
+  rescue ArgumentError
+    true
 end
 
 # main program
@@ -81,12 +83,8 @@ language = which_language(answer)
 loop do
   prompt(messages('welcome', language))
   name = Kernel.gets().chomp()
-
-  if name.empty?()
-    prompt(messages('Invalid_name', language))
-  else
-    break
-  end
+  break unless name.empty?()
+  prompt(messages('Invalid_name', language))
 end
 
 #  greet with name
@@ -100,7 +98,7 @@ loop do # main loop
 
     if loan_amount.empty?()
       prompt(messages('empty_message', language))
-    elsif numeric?(loan_amount)
+    elsif not_numeric?(loan_amount)
       prompt(messages('Invalid_entry', language))
     else
       break
@@ -114,7 +112,7 @@ loop do # main loop
 
     if annual_interest.empty?()
       prompt(messages('empty_message', language))
-    elsif numeric?(annual_interest)
+    elsif not_numeric?(annual_interest)
       prompt(messages('Invalid_entry', language))
     else
       break
@@ -129,7 +127,7 @@ loop do # main loop
 
     if loan_term.empty?()
       prompt(messages('empty_message', language))
-    elsif numeric?(loan_term)
+    elsif not_numeric?(loan_term)
       prompt(messages('Invalid_entry', language))
     else
       break
@@ -137,7 +135,9 @@ loop do # main loop
   end
 
   # make calculations
-  main_monthly_payment = monthly_payment(loan_amount.to_f(), main_monthly_interest.to_f(), loan_term.to_f())
+  main_monthly_payment = monthly_payment(loan_amount.to_f(),
+                                         main_monthly_interest.to_f(),
+                                         loan_term.to_f())
 
   # return result to user
   prompt(messages('result', language) + "$" + main_monthly_payment.to_s)
