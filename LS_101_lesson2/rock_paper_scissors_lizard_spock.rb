@@ -38,10 +38,8 @@ def convert_input(input)
       convert_answer = Kernel.gets().chomp()
       if convert_answer == "c"
         return "scissors"
-        break
       elsif convert_answer == "p"
         return "spock"
-        break
       else
         puts "Invalid entry."
       end
@@ -109,8 +107,8 @@ loop do # main loop
       tie_score += 1
     end
 
-    prompt("Your score is: #{player_score}; The computer's score: #{computer_score};
-            Tie score is: #{tie_score}")
+    prompt("Your score is: #{player_score}; The computer's score:
+            #{computer_score}; Tie score is: #{tie_score}")
 
     winner = check_winner(player_score, computer_score)
     if winner == "player"
