@@ -35,10 +35,9 @@ def user_input
   loop do # user choice loop
     prompt("Choose one: #{DISPLAY_CHOICES.join(', ')}")
     choice = Kernel.gets().chomp().downcase()
-    break if CONVERTED_INPUT.has_key?(choice.to_sym)
+    break if CONVERTED_INPUT.key?(choice.to_sym)
     prompt("That's not a valid choice.")
   end
-  #puts choice
   choice
 end
 
@@ -92,7 +91,6 @@ end
 loop do # main loop
   loop do # round loop
     user_choice = convert_input(user_input)
-    #puts user_choice
 
     computer_choice = VALID_CHOICES.sample
 
