@@ -11,11 +11,6 @@ CONVERTED_INPUT = { r: "rock",
                     s: "scissors",
                     l: "lizard",
                     k: "spock" }
-user_choice = ''
-player_score = 0
-computer_score = 0
-tie_score = 0
-winner = ''
 
 # methods
 def prompt(message)
@@ -30,7 +25,7 @@ def convert_input(input)
   CONVERTED_INPUT.fetch(input.downcase().to_sym)
 end
 
-def user_input
+def user_selection
   choice = ''
   loop do # user choice loop
     prompt("Choose one: #{DISPLAY_CHOICES.join(', ')}")
@@ -51,7 +46,7 @@ def display_results(player, computer)
   end
 end
 
-def add_score(player, computer)
+def select_winner(player, computer)
   if win?(player, computer)
     "player"
   elsif win?(computer, player)
@@ -61,7 +56,7 @@ def add_score(player, computer)
   end
 end
 
-def check_winner(score_player, score_computer)
+def check_game_winner(score_player, score_computer)
   if score_player == 5
     "player"
   elsif score_computer == 5
@@ -84,13 +79,18 @@ def continue_playing?
     prompt("That's an invalid input.")
   end
   clear_screen
-  answer == 'y' ? true : false
+  answer == 'y'
 end
 
 # main program
 loop do # main loop
+  # reset score variables to zero
+  player_score = 0
+  computer_score = 0
+  tie_score = 0
+
   loop do # round loop
-    user_choice = convert_input(user_input)
+    user_choice = convert_input(user_selection)
 
     computer_choice = VALID_CHOICES.sample
 
@@ -100,7 +100,7 @@ loop do # main loop
 
     display_results(user_choice, computer_choice)
 
-    scoring = add_score(user_choice, computer_choice)
+    scoring = select_winner(user_choice, computer_choice)
     if scoring == "player"
       player_score += 1
     elsif scoring == "computer"
@@ -113,7 +113,7 @@ loop do # main loop
     The computer's score: #{computer_score}
     Tie score is: #{tie_score}")
 
-    winner = check_winner(player_score, computer_score)
+    winner = check_game_winner(player_score, computer_score)
     if winner == "player"
       prompt("Congratulations, you won the game!")
       break
@@ -124,10 +124,6 @@ loop do # main loop
   end
 
   break unless continue_playing?
-  # reset score variables to zero
-  player_score = 0
-  computer_score = 0
-  tie_score = 0
 end
 
 prompt("Thank you for playing!")
